@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EK 2021 Ticketverkoop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <img src="images/uefa.png" alt="dummy" id="dummy">
+    <div class="search">
+
+        <!-- <input type="text" id="searchbar" placeholder="Zoek..."><br> -->
+    </div>
+    <div id="nav">
+        <a href="#">
+            <div id="home" class="navitems">
+                <p class="p">Home</p>
+            </div>
+        </a>
+        <a href="#">
+            <div id="info" class="navitems">
+                <p class="p">Informatie</p>
+            </div>
+        </a>
+        <a href="#">
+            <div id="ticket" class="navitems">
+                <p class="p">Ticketverkoop</p>
+            </div>
+        </a>
+        <a href="#">
+            <div id="contact" class="navitems">
+                <p class="p">Contact</p>
+            </div>
+        </a>
+    </div>
+
+
+
+
+
+    <form id="formulier">
+
+        <div id="border">
+
+            <h3 id="invullen">Vul de invoervelden in en selecteer de gewenste stoelen.</h3>
+            <div class="choosing">
+
+                <div class="wrapper-1">
+                    <label id="label-naam">
+                        Naam:
+                    </label><br>
+                    <input name="naam" type="text" id="textbox-naam" placeholder="Vul uw naam in...">
+
+                    <label id="label-email">
+                        E-Mail:
+                    </label><br>
+                    <input name="email" type="text" id="textbox-email" placeholder="Vul uw E-Mail in...">
+
+                    
+                </div>
+
+
+
+                <div id="knoppen">
+                    <button class="knoppen" id="prijzenlijst"
+                        onclick="openList()"><strong>Prijzenlijst</strong></button>
+                    <button class="knoppen" id="betalen" onclick="openPayment()"><strong>Betalen</strong></button>
+                </div>
+            </div>
+        </div>
+
+        <!--Prijzen popup-->
+        <div id="prijzenpopup">
+            <div class="lijst-header">
+                <h2 id="h2P">Prijzenlijst</h2>
+            </div>
+            <p id="close" onclick="closeList()"><strong>&times;</strong></p>
+            <div id="popup-text">
+                <div id="ticketprijs">
+                    <h4>Ticket p.p.:</h4>
+                    <table id="table">
+                        <tr>
+                            <th>Rij</th>
+                            <th>Prijs</th>
+                        </tr>
+                        <tr>
+                            <td>Rij G</td>
+                            <td>&euro; 80.-</td>
+                        </tr>
+                        <tr>
+                            <td>Rij F</td>
+                            <td>&euro; 80.-</td>
+                        </tr>
+                        <tr>
+                            <td>Rij E</td>
+                            <td>&euro; 85.-</td>
+                        </tr>
+                        <tr>
+                            <td>Rij D</td>
+                            <td>&euro; 90.-</td>
+                        </tr>
+                        <tr>
+                            <td>Rij C</td>
+                            <td>&euro; 100.-</td>
+                        </tr>
+                        <tr>
+                            <td>Rij B</td>
+                            <td>&euro; 110.-</td>
+                        </tr>
+                        <tr>
+                            <td>Rij A</td>
+                            <td>&euro; 120.-</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="extra">
+                    <h4>Extra Kosten</h4>
+                    <p>Er komt &euro; 9.- extra kosten bij om de servicekosten, annuleringskosten en belasting te
+                        dekken.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!--Betalen popup-->
+        <div id="betalenpopup">
+            <div id="payheader">
+                <h2 id="h2B">Betalen</h2>
+            </div>
+            <p id="closepay" onclick="closePay()"><strong>&times;</strong></p>
+            <div id="paycontent">
+                <p id="recipe-naam">&nbsp;Naam: </p>
+                <p id="recipe-email">&nbsp;E-Mail: <br> </p>
+                <p id="recipe-vak">&nbsp;Vak: </p>
+                <p id="recipe-stoelen">&nbsp;Aantal geselecteerde <br> &nbsp;stoelen: </p>
+
+
+                <!-- <input type="button" id="knop" value="PDF-Bestand &#8675;">-->
+
+
+            </div>
+            <p id="recipe-extra">&nbsp;Extra kosten: &euro; 9.-</p>
+
+            <p id="totaal">&nbsp;Totale prijs:</p>
+
+            <button id="paybtn" class="knoppen" onclick="mollie()"><strong>Naar betalen</strong></button>
+        </div>
+
+
+
+
+        <div class="legend">
+            <div class="inside-legend">
+                <img src="images/seat.png" alt="seat" class="seat-legend" id="seat1-legend">
+                <label id="label-1" class="legend-labels">Beschikbaar</label>
+                <img src="images/seat.png" alt="seat" class="seat-legend" id="seat2-legend">
+                <label id="label-2" class="legend-labels">Gekozen</label>
+                <img src="images/seat.png" alt="seat" class="seat-legend" id="seat3-legend">
+                <label id="label-3" class="legend-labels">Gereserveerd</label>
+                <p></p>
+            </div>
+        </div>
+
+        <select name="select" id="selecteer">
+            <option value="choose" id="choose" disabled selected>Kies het vak...</option>
+            <option value="A">Vak A</option>
+            <option value="B">Vak B</option>
+            <option value="C">Vak C</option>
+            <option value="D">Vak D</option>
+            <option value="E">Vak E</option>
+            <option value="F">Vak F</option>
+            <option value="G">Vak G</option>
+            <option value="H">Vak H</option>
+            <option value="I">Vak I</option>
+            <option value="J">Vak J</option>
+        </select>
+
+
+
+
+
+
+
+
+
+
+
+        <div id="numbers">
+            <p class="n-rows" id="one"><strong>1</strong></p>
+            <p class="n-rows" id="two"><strong>2</strong></p>
+            <p class="n-rows" id="three"><strong>3</strong></p>
+            <p class="n-rows" id="four"><strong>4</strong></p>
+            <p class="n-rows" id="five"><strong>5</strong></p>
+            <p class="n-rows" id="six"><strong>6</strong></p>
+            <p class="n-rows" id="seven"><strong>7</strong></p>
+            <p class="n-rows" id="eight"><strong>8</strong></p>
+            <p class="n-rows" id="nine"><strong>9</strong></p>
+            <p class="n-rows" id="ten"><strong>10</strong></p>
+        </div>
+        <div id="seats">
+            <div id="rows">
+                <p class="rows" id="G"><strong>G</strong></p>
+                <p class="rows" id="F"><strong>F</strong></p>
+                <p class="rows" id="E"><strong>E</strong></p>
+                <p class="rows" id="D"><strong>D</strong></p>
+                <p class="rows" id="C"><strong>C</strong></p>
+                <p class="rows" id="B"><strong>B</strong></p>
+                <p class="rows" id="A"><strong>A</strong></p>
+            </div>
+            <div id="all-seats">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat1" onclick="test(seat1)">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat2" onclick="test2()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat3" onclick="test3()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat4" onclick="test4()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat5" onclick="test5()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat6" onclick="test6()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat7" onclick="test7()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat8" onclick="test8()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat9" onclick="test9()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat10" onclick="test10()">
+                <br>
+                <img src="images/seat.png" alt="seat" class="seat" id="seat11" onclick="test11()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat12" onclick="test12()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat13" onclick="test13()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat14" onclick="test14()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat15" onclick="test15()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat16" onclick="test16()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat17" onclick="test17()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat18" onclick="test18()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat19" onclick="test19()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat20" onclick="test20()">
+                <br>
+                <img src="images/seat.png" alt="seat" class="seat" id="seat21" onclick="test21()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat22" onclick="test22()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat23" onclick="test23()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat24" onclick="test24()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat25" onclick="test25()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat26" onclick="test26()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat27" onclick="test27()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat28" onclick="test28()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat29" onclick="test29()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat30" onclick="test30()">
+                <br>
+                <img src="images/seat.png" alt="seat" class="seat" id="seat31" onclick="test31()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat32" onclick="test32()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat33" onclick="test33()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat34" onclick="test34()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat35" onclick="test35()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat36" onclick="test36()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat37" onclick="test37()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat38" onclick="test38()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat39" onclick="test39()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat40" onclick="test40()">
+                <br>
+                <img src="images/seat.png" alt="seat" class="seat" id="seat41" onclick="test41()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat42" onclick="test42()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat43" onclick="test43()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat44" onclick="test44()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat45" onclick="test45()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat46" onclick="test46()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat47" onclick="test47()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat48" onclick="test48()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat49" onclick="test49()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat50" onclick="test50()">
+                <br>
+                <img src="images/seat.png" alt="seat" class="seat" id="seat51" onclick="test51()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat52" onclick="test52()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat53" onclick="test53()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat54" onclick="test54()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat55" onclick="test55()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat56" onclick="test56()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat57" onclick="test57()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat58" onclick="test58()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat59" onclick="test59()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat60" onclick="test60()">
+                <br>
+                <img src="images/seat.png" alt="seat" class="seat" id="seat61" onclick="test61()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat62" onclick="test62()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat63" onclick="test63()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat64" onclick="test64()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat65" onclick="test65()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat66" onclick="test66()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat67" onclick="test67()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat68" onclick="test68()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat69" onclick="test69()">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat70" onclick="test70()">
+            </div>
+        </div>
+
+
+
+
+        <canvas id="canvas" width="1000px" height="200px"></canvas>
+        <h2 id="grasveld">Grasveld</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </form>
+    <script src="script.js"></script>
+</body>
+
+</html>
