@@ -1,4 +1,5 @@
 
+
 let context = document.getElementById('totaal');
 
 let inputNaam = document.getElementById('textbox-naam');
@@ -33,6 +34,12 @@ let form = document.forms[0];
 
 let extra = 9;
 
+
+
+
+
+
+
 form.addEventListener('click', event => {
     event.preventDefault();
 
@@ -47,12 +54,12 @@ form.addEventListener('click', event => {
 
     context.innerHTML = '&nbsp;Totale prijs: &euro; ' + prijs;
 
-  
-        outputNaam.innerHTML = '&nbsp;Naam: ' + '<strong>' + inputNaam.value + '</strong>';
-        outputSelect.innerHTML = '&nbsp;Aantal geselecteerde <br>&nbsp;stoelen: ' + parseInt(selectA + selectB + selectC + selectD + selectE + selectF + selectG);
-        outputEmail.innerHTML = 'E-Mail: ' + '<br>' + '<strong>' + email.value + '</strong>';
-        outputVak.innerHTML = '&nbsp;Vak: ' + vak.value;
-    
+
+    outputNaam.innerHTML = '&nbsp;Naam: ' + '<strong>' + inputNaam.value + '</strong>';
+    outputSelect.innerHTML = '&nbsp;Aantal geselecteerde <br>&nbsp;stoelen: ' + parseInt(selectA + selectB + selectC + selectD + selectE + selectF + selectG);
+    outputEmail.innerHTML = 'E-Mail: ' + '<br>' + '<strong>' + email.value + '</strong>';
+    outputVak.innerHTML = '&nbsp;Vak: ' + vak.value;
+
 
     console.clear()
     console.log('selectA = ' + selectA);
@@ -65,7 +72,7 @@ form.addEventListener('click', event => {
     console.log('Prijs = ' + prijs);
 });
 
-   
+
 
 
 
@@ -74,26 +81,30 @@ function openList() {
     lijst.style.display = 'block';
     let pay = document.getElementById('betalenpopup');
     pay.style.display = 'none';
-    
+
 }
 function closeList() {
     let lijst = document.getElementById('prijzenpopup');
     lijst.style.display = 'none';
-    
+
 }
-function openPayment(){
+function openPayment() {
     let pay = document.getElementById('betalenpopup');
     pay.style.display = 'block';
     let lijst = document.getElementById('prijzenpopup');
     lijst.style.display = 'none';
-   
+
 }
-function closePay(){
+function closePay() {
     let pay = document.getElementById('betalenpopup');
     pay.style.display = 'none';
-   
-}
 
+}
+function payment() {
+
+    actions.request.post()
+    return res.id;
+}
 
 
 // Canvas

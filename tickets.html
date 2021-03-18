@@ -7,33 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EK 2021 Ticketverkoop</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
 </head>
 
 <body>
-    <img src="images/uefa.png" alt="dummy" id="dummy">
-    <div class="search">
-
-        <!-- <input type="text" id="searchbar" placeholder="Zoek..."><br> -->
+    <div id="header">
+        <div id="logo"> <img id="logoImg" src="images/uefa.png" alt="img"></div>
+        <div id="titel">UEFA EURO 2021</div>
     </div>
-    <div id="nav">
-        <a href="#">
-            <div id="home" class="navitems">
-                <p class="p">Home</p>
+    <div id="navGrid">
+        <a href="index.html">
+            <div id="navKnop1" class="navKnop">
+                <p class="navTekst">Home</p>
+            </div>
+        </a>
+        <a href="Mlanden-D.html">
+            <div id="navKnop2" class="navKnop">
+                <p class="navTekst">Informatie</p>
+            </div>
+        </a>
+        <a href="tickets-M.html">
+            <div id="navKnop3" class="navKnop">
+                <p class="navTekst">Ticketverkoop</p>
             </div>
         </a>
         <a href="#">
-            <div id="info" class="navitems">
-                <p class="p">Informatie</p>
-            </div>
-        </a>
-        <a href="#">
-            <div id="ticket" class="navitems">
-                <p class="p">Ticketverkoop</p>
-            </div>
-        </a>
-        <a href="#">
-            <div id="contact" class="navitems">
-                <p class="p">Contact</p>
+            <div id="navKnop4" class="navKnop">
+                <p class="navTekst">Contact</p>
             </div>
         </a>
     </div>
@@ -60,7 +61,7 @@
                     </label><br>
                     <input name="email" type="text" id="textbox-email" placeholder="Vul uw E-Mail in...">
 
-                    
+
                 </div>
 
 
@@ -135,9 +136,9 @@
             <p id="closepay" onclick="closePay()"><strong>&times;</strong></p>
             <div id="paycontent">
                 <p id="recipe-naam">&nbsp;Naam: </p>
-                <p id="recipe-email">&nbsp;E-Mail: <br> </p>
-                <p id="recipe-vak">&nbsp;Vak: </p>
-                <p id="recipe-stoelen">&nbsp;Aantal geselecteerde <br> &nbsp;stoelen: </p>
+                <p id="recipe-email">&nbsp;E-Mail: </p><br>
+                <p id="recipe-vak">&nbsp;Vak: </p><br>
+                <p id="recipe-stoelen">&nbsp;Aantal geselecteerde <br> &nbsp;stoelen: </p><br>
 
 
                 <!-- <input type="button" id="knop" value="PDF-Bestand &#8675;">-->
@@ -148,7 +149,7 @@
 
             <p id="totaal">&nbsp;Totale prijs:</p>
 
-            <button id="paybtn" class="knoppen" onclick="mollie()"><strong>Naar betalen</strong></button>
+            <button id="paybtn" class="knoppen" onclick="payment()"><strong>Naar betalen</strong></button>
         </div>
 
 
@@ -162,12 +163,12 @@
                 <label id="label-2" class="legend-labels">Gekozen</label>
                 <img src="images/seat.png" alt="seat" class="seat-legend" id="seat3-legend">
                 <label id="label-3" class="legend-labels">Gereserveerd</label>
-                <p></p>
+
             </div>
         </div>
 
         <select name="select" id="selecteer">
-            <option value="choose" id="choose" disabled selected>Kies het vak...</option>
+            <option value="Kies het vak." id="choose" disabled selected>Kies het vak...</option>
             <option value="A">Vak A</option>
             <option value="B">Vak B</option>
             <option value="C">Vak C</option>
@@ -213,7 +214,7 @@
                 <p class="rows" id="A"><strong>A</strong></p>
             </div>
             <div id="all-seats">
-                <img src="images/seat.png" alt="seat" class="seat" id="seat1" onclick="test(seat1)">
+                <img src="images/seat.png" alt="seat" class="seat" id="seat1" onclick="test()">
                 <img src="images/seat.png" alt="seat" class="seat" id="seat2" onclick="test2()">
                 <img src="images/seat.png" alt="seat" class="seat" id="seat3" onclick="test3()">
                 <img src="images/seat.png" alt="seat" class="seat" id="seat4" onclick="test4()">
@@ -314,7 +315,43 @@
 
 
     </form>
+
+    <div id="footer">
+        <div id="footerGrid">
+            <div class="footItem" id="footItem1">
+                <div class="footerContent" id="footCont1">
+                    <p class="footTitels" id="socialMTekst">Onze Social-media : </p>
+                </div>
+                <div class="footerContent" id="footCont2">
+                    <a href="https://facebook.com" class="fa fa-facebook"></a>
+                    <a href="https://twitter.com" class="fa fa-twitter"></a>
+                    <a href="https://google.com" class="fa fa-google"></a>
+                    <a href="https://linkedin.com" class="fa fa-linkedin"></a>
+                    <a href="https://youtube.com" class="fa fa-youtube"></a>
+                </div>
+            </div>
+            <div class="footItem" id="footItem2">
+                <div class="footerContent" id="">
+                    <p class="footTitels" id="">titel ietsssssssssssss</p>
+                </div>
+                <div class="footerContent" id="">
+                    <p class="footTekstContent" id="">CONTENT IETS</p>
+                </div>
+            </div>
+            <div class="footItem" id="footItem3">
+                <div class="footerContent" id="">
+                    <p class="footTitels" id="">titel ietssssssssssss</p>
+                </div>
+                <div class="footerContent" id="">
+                    <p class="footTekstContent" id="">CONTENT IETS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
     <script src="script.js"></script>
+    <script src="mollie.js"></script>
 </body>
 
 </html>
